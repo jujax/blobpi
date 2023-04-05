@@ -1,0 +1,50 @@
+{
+  "name": "blobpi",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "repository": "git@github.com:jujax/blobpi.git",
+  "author": "Julien Pelletier <julien.pelletier8@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build ./tsconfig.json",
+    "build:dev": "tsc --build ./tsconfig.json --watch",
+    "launch": "node build/index.js",
+    "launch:dev": "nodemon build/index.js",
+    "prepare": "husky install",
+    "lint": "yarn eslint src/ --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "yarn build && yarn launch",
+    "start:dev": "yarn build:dev && yarn launch:dev"
+  },
+  "dependencies": {
+    "cron": "^2.3.0",
+    "dotenv": "^16.0.3",
+    "dotenv-expand": "^10.0.0",
+    "node-hue-api": "^5.0.0-beta.15",
+    "node-raspistill": "^2.0.1"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.7",
+    "release-it": "^15.10.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.0.3"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "yarn format",
+      "yarn lint",
+      "bash -c 'yarn build'"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node-api/node_modules/cz-conventional-changelog"
+    }
+  }
+}
