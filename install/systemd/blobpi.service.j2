@@ -1,0 +1,12 @@
+[Unit]
+Description=BlobPi
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory={{ installDir }}
+ExecStart={{ whereIsNpm }} run launch
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

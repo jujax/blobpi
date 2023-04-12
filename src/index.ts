@@ -1,16 +1,40 @@
-import { Raspistill } from "node-raspistill";
-import CronJob from "cron";
-import { discoverAndCreateUser } from "./hue-functions";
+import Camera from "./camera";
+import Light from "./light";
 import fs from "fs";
-// const camera = new Raspistill();
+import "dotenv-defaults/config";
+import timestring from "timestring";
 
-// camera.takePhoto().then((photo) => { });
+function sleep(ms: number) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, ms);
+	});
+}
+
+async function takePicture(light: Light, camera: Camera) {
+	light.turnOn();
+	await sleep(1000);
+	const picture = await camera.takePicture();
+	fs.writeFileSync(`images/blob-${new Date().toISOString()}.jpg`, picture);
+	await sleep(1000);
+	light.turnOff();
+}
 
 async function start() {
-    // const createdUser = await discoverAndCreateUser();
-    fs.writeFileSync("./user.json", JSON.stringify({test: 1}));
+    verifImageFolder();
+	const light = new Light();
+    const camera = new Camera();
+    await takePicture(light, camera);
+	setInterval(async () => {
+		await takePicture(light, camera);
+	}, timestring(process.env.PHOTO_TIMER, "ms"));
 }
 
 start().catch((err) => {
-    console.error(err);
+	console.error(err);
 });
+
+function verifImageFolder() {
+    if (!fs.existsSync("images")) {
+        fs.mkdirSync("images");
+    }
+}

@@ -18,13 +18,19 @@
     "start:dev": "yarn build:dev && yarn launch:dev"
   },
   "dependencies": {
-    "cron": "^2.3.0",
-    "dotenv": "^16.0.3",
-    "dotenv-expand": "^10.0.0",
+    "cron-parser": "^4.8.1",
+    "dotenv-defaults": "^5.0.2",
+    "liquid": "^5.1.1",
     "node-hue-api": "^5.0.0-beta.15",
-    "node-raspistill": "^2.0.1"
+    "node-raspistill": "^2.0.1",
+    "pigpio": "^3.3.1",
+    "rpi-gpio": "^2.1.7",
+    "timestring": "^6.0.0"
   },
   "devDependencies": {
+    "@types/cron": "^2.0.1",
+    "@types/rpi-gpio": "^2.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
@@ -44,7 +50,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node-api/node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
