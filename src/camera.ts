@@ -6,7 +6,10 @@ const arch = os.arch();
 
 class Camera {
 	private camera: Raspistill;
-	constructor() {
+
+	cameraEnabled: boolean;
+	constructor(cameraEnabled = true) {
+		this.cameraEnabled = cameraEnabled;
 		if (arch.includes("arm")) {
 			this.camera = new Raspistill({
 				noFileSave: true
@@ -14,7 +17,7 @@ class Camera {
 		}
 	}
 	takePicture() {
-		if (arch.includes("arm")) {
+		if (arch.includes("arm") && this.cameraEnabled) {
 			return this.camera.takePhoto();
 		} else {
 			const image = fs.readFileSync("tests/test.png");
