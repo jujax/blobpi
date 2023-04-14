@@ -1,29 +1,11 @@
 {
 	"compilerOptions": {
-		"target": "ES2021" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
 		"module": "CommonJS" /* Specify what module code is generated. */,
 		"rootDir": "./src" /* Specify the root folder within your source files. */,
-		// "resolveJsonModule": true /* Enable importing .json files */,
-		// "moduleResolution": "classic" /* Specify how TypeScript looks up a file from a given module specifier. */,
 		"sourceMap": true /* Create source map files for emitted JavaScript files. */,
 		"outDir": "./build" /* Specify an output folder for all emitted files. */,
-		"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
-		// "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-		// "strict": true /* Enable all strict type-checking options. */,
-		"noImplicitAny": false /* Enable error reporting for expressions and declarations with an implied `any` type.. */,
-		"useUnknownInCatchVariables": false /* Type catch clause variables as 'unknown' instead of 'any'. */,
-		"skipLibCheck": true /* Skip type checking all .d.ts files. */,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"strictPropertyInitialization": false,
-		"allowSyntheticDefaultImports": true,
 		// "incremental": true /* Enable incremental compilation */,
 		"declaration": true,
 		"removeComments": true,
-		"baseUrl": "./src",
-		"strictNullChecks": false,
-		"strictBindCallApply": false,
-		"forceConsistentCasingInFileNames": false,
-		"noFallthroughCasesInSwitch": false
 	}
 }

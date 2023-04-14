@@ -1,5 +1,5 @@
 import myEE from "./event-handler";
-import express from "express";
+import * as express from "express";
 
 class Backend {
 	port = process.env.BACKEND_PORT;

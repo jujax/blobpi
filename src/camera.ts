@@ -1,6 +1,6 @@
 import { Raspistill } from "node-raspistill";
-import os from "os";
-import fs from "fs";
+import * as os from "os";
+import * as fs from "fs";
 
 const arch = os.arch();
 

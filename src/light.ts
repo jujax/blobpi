@@ -1,4 +1,4 @@
-import os from "os";
+import * as os from "os";
 import { Gpio } from "pigpio";
 import myEE from "./event-handler";
 import { LightParams } from "./types";

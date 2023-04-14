@@ -1,6 +1,6 @@
 import Camera from "./camera";
 import Light from "./light";
-import fs from "fs";
+import * as fs from "fs";
 import "dotenv-defaults/config";
 import timestring from "timestring";
 import Backend from "./backend";
