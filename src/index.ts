@@ -4,7 +4,8 @@ import * as fs from "fs";
 import "dotenv-defaults/config";
 import timestring from "timestring";
 import Backend from "./backend";
-import myEE from "./event-handler";
+import eventHandler from "./event-handler";
+import { verifImageFolder } from "./utils";
 
 function sleep(ms: number) {
 	return new Promise((resolve) => {
@@ -32,7 +33,7 @@ async function start() {
 		await takePicture(light, camera);
 	}, timestring(process.env.TIMER_INTERVAL, "ms"));
 	
-	myEE.on("takePicture", async () => {
+	eventHandler.on("takePicture", async () => {
 		await takePicture(light, camera);
 	});
 }
@@ -40,9 +41,3 @@ async function start() {
 start().catch((err) => {
 	console.error(err);
 });
-
-function verifImageFolder() {
-	if (!fs.existsSync("images")) {
-		fs.mkdirSync("images");
-	}
-}
