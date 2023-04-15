@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 export function verifImageFolder() {
-	if (!fs.existsSync("images")) {
-		fs.mkdirSync("images");
+	if (!fs.existsSync("photos")) {
+		fs.mkdirSync("photos");
 	}
 }

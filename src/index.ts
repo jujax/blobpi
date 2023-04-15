@@ -17,7 +17,7 @@ async function takePicture(light: Light, camera: Camera) {
 	light.turnOn();
 	await sleep(1000);
 	const picture = await camera.takePicture();
-	fs.writeFileSync(`images/blob-${new Date().toISOString()}.jpg`, picture);
+	fs.writeFileSync(`photos/blob-${new Date().toISOString()}.jpg`, picture);
 	await sleep(1000);
 	light.turnOff();
 }
