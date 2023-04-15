@@ -4,7 +4,7 @@
 		"rootDir": "./src" /* Specify the root folder within your source files. */,
 		"sourceMap": true /* Create source map files for emitted JavaScript files. */,
 		"outDir": "./build" /* Specify an output folder for all emitted files. */,
-		// "incremental": true /* Enable incremental compilation */,
+		"incremental": true /* Enable incremental compilation */,
 		"declaration": true,
 		"removeComments": true,
 	}
