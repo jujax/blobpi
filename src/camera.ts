@@ -12,7 +12,9 @@ class Camera {
 		this.cameraEnabled = cameraEnabled;
 		if (arch.includes("arm")) {
 			this.camera = new Raspistill({
-				noFileSave: true
+				noFileSave: true,
+				noPreview: true,
+				awb: "auto"
 			});
 		}
 	}
