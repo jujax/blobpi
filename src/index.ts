@@ -2,7 +2,7 @@ import Camera from "./camera";
 import Light from "./light";
 import * as fs from "fs";
 import "dotenv-defaults/config";
-import timestring from "timestring";
+import * as timestring from "timestring";
 import Backend from "./backend";
 import eventHandler from "./event-handler";
 import { verifImageFolder } from "./utils";
