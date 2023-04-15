@@ -1,20 +1,25 @@
 import { Raspistill } from "node-raspistill";
-import os from "os";
-import fs from "fs";
+import * as os from "os";
+import * as fs from "fs";
 
 const arch = os.arch();
 
 class Camera {
 	private camera: Raspistill;
-	constructor() {
+
+	cameraEnabled: boolean;
+	constructor(cameraEnabled = true) {
+		this.cameraEnabled = cameraEnabled;
 		if (arch.includes("arm")) {
 			this.camera = new Raspistill({
-				noFileSave: true
+				noFileSave: true,
+				noPreview: true,
+				awb: "auto"
 			});
 		}
 	}
 	takePicture() {
-		if (arch.includes("arm")) {
+		if (arch.includes("arm") && this.cameraEnabled) {
 			return this.camera.takePhoto();
 		} else {
 			const image = fs.readFileSync("tests/test.png");
