@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
 
-const myEE = new EventEmitter();
+const eventHandler = new EventEmitter();
 
-export default myEE;
+export default eventHandler;

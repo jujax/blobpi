@@ -1,5 +1,5 @@
-import myEE from "./event-handler";
-import express from "express";
+import eventHandler from "./event-handler";
+import * as express from "express";
 
 class Backend {
 	port = process.env.BACKEND_PORT;
@@ -38,13 +38,13 @@ class Backend {
 	}
 
 	postPhoto(req, res) {
-		myEE.emit("takePicture");
+		eventHandler.emit("takePicture");
 		res.send("takePicture");
 	}
 
 	postLight(req, res) {
 		const { status } = req.body;
-		myEE.emit(`light:${status ? "on" : "off"}`);
+		eventHandler.emit(`light:${status ? "on" : "off"}`);
 		res.json({
 			status
 		});

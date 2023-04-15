@@ -1,6 +1,6 @@
 import { Raspistill } from "node-raspistill";
-import os from "os";
-import fs from "fs";
+import * as os from "os";
+import * as fs from "fs";
 
 const arch = os.arch();
 
@@ -12,7 +12,9 @@ class Camera {
 		this.cameraEnabled = cameraEnabled;
 		if (arch.includes("arm")) {
 			this.camera = new Raspistill({
-				noFileSave: true
+				noFileSave: true,
+				noPreview: true,
+				awb: "auto"
 			});
 		}
 	}
