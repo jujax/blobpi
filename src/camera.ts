@@ -14,7 +14,8 @@ class Camera {
 			this.camera = new Raspistill({
 				noFileSave: true,
 				noPreview: true,
-				awb: "auto"
+				awb: "auto",
+				encoding: "png"
 			});
 		}
 	}
