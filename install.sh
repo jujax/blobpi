@@ -13,14 +13,12 @@ if  ! command -v node &> /dev/null; then
     exit 1
 fi
 
-if [[ "$EUID" = 0 ]]; then
-    echo "Install in progress ..."
-    $NPM install && \
-    $NPM run build && \
-    $NODE install/install.js && \
-    echo "Install finished" && \
-    exit 0
-else
-    echo "Must be launched with sudo"
-    exit 1
-fi
+sudo $NPM install -g pm2
+PM=$(command -v pm2)
+
+echo "Install in progress ..."
+$NPM install && \
+$NPM run build && \
+echo "Install finished" && \
+$PM startup && \
+exit 0

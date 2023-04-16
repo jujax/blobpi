@@ -19,7 +19,7 @@ class Camera {
 			});
 		}
 	}
-	takePicture() {
+	async takePicture() {
 		if (arch.includes("arm") && this.cameraEnabled) {
 			return this.camera.takePhoto();
 		} else {

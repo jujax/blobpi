@@ -1,7 +1,8 @@
 import Backend from "../components/backend";
 
-process.on('message', function (packet) {
-    debugger;
+const backend = new Backend();
+
+process.on("message", function (packet) {
+	backend.handleMessageFromMainProcess(packet);
 });
 
-const backend = new Backend();
