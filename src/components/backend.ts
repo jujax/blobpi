@@ -17,7 +17,7 @@ class Backend {
 	}
 
 	async takePicture(req, res) {
-		const lightEnabled = JSON.parse(req.query.lightEnabled);
+		const lightEnabled = JSON.parse(req.query.lightEnabled || false);
 		if (lightEnabled) {
 			process.send({
 				type: "setState",
@@ -29,9 +29,14 @@ class Backend {
 				}
 			});
 		}
-		const camera = new Camera();
+		const camera = new Camera({
+			encoding: "jpg",
+			quality: 50,
+			width: 500,
+			height: 384
+		});
 		const photo = await camera.takePicture();
-		res.set({ "Content-Type": "image/png" }).send(photo);
+		res.set({ "Content-Type": "image/jpg" }).send(photo);
 		if (lightEnabled) {
 			process.send({
 				type: "setState",

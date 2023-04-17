@@ -6,21 +6,26 @@ const arch = os.arch();
 
 class Camera {
 	private camera: Raspistill;
-
-	cameraEnabled: boolean;
-	constructor(cameraEnabled = true) {
-		this.cameraEnabled = cameraEnabled;
+	constructor(options?: {
+		encoding?: "jpg" | "png" | "gif" |"bmp",
+		quality?: number,
+		width?: number,
+		height?: number
+	}) {
 		if (arch.includes("arm")) {
 			this.camera = new Raspistill({
 				noFileSave: true,
 				noPreview: true,
 				awb: "auto",
-				encoding: "png"
+				encoding: options.encoding || "png",
+				quality: options.quality || 100,
+				width: options.width,
+				height: options.height
 			});
 		}
 	}
 	async takePicture() {
-		if (arch.includes("arm") && this.cameraEnabled) {
+		if (arch.includes("arm")) {
 			return this.camera.takePhoto();
 		} else {
 			const image = fs.readFileSync("tests/test.png");
