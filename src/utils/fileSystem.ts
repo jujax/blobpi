@@ -5,3 +5,6 @@ export function verifImageFolder() {
 		fs.mkdirSync("photos");
 	}
 }
+export function savePicture(picture: Buffer) {
+	fs.writeFileSync(`photos/blob-${new Date().toISOString()}.png`, picture);
+}
